@@ -1,0 +1,286 @@
+<!-- Static export of the Admin interface for DoctorConnect.
+     Built by Minhazul Abedin (21-44625-1).
+     The working PHP version of these screens is in ../PHP/. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doctors &mdash; DoctorConnect</title>
+    <link rel="stylesheet" href="../CSS/admin.css">
+</head>
+<body>
+
+
+<div class="shell">
+    <nav class="sidebar">
+        <a href="adminDashboard.html" class="brand">
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M6 17.5h4.2l2.1-5.4 3.4 9.2 2.4-6 1.6 2.2H26" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>            <span class="logo">DoctorConnect</span>
+        </a>
+
+        <div class="nav-label">Administration</div>
+        <div class="navlinks">
+            <a href="adminDashboard.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Overview</span></a><a href="manageDoctors.html" class="on"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.5"/><path d="M22 20v-2a4 4 0 0 0-3-3.8"/><path d="M16 3.2A4 4 0 0 1 16 10.8"/></svg><span>Doctors</span></a><a href="manageDepartments.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l9 5-9 5-9-5 9-5Z"/><path d="M3 13l9 5 9-5"/></svg><span>Departments</span></a>        </div>
+
+        <div class="nav-label">Account</div>
+        <div class="navlinks">
+            <a href="#"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg><span>My Account</span></a>        </div>
+
+        <div class="side-foot">
+            <div class="whoami">
+                <span class="avatar">SA</span>
+                <span>
+                    <span class="whoami-name">System Admin</span>
+                    <span class="role role-admin">admin</span>
+                </span>
+            </div>
+            <a href="#" class="btn-logout"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 17l5-5-5-5"/><path d="M20 12H9"/><path d="M12 20H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/></svg> <span>Log out</span></a>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+
+
+<div class="page-head">
+    <div>
+        <h1>Doctors</h1>
+        <p class="muted">Add a doctor, change their details, or remove one who has no appointments.</p>
+    </div>
+</div>
+
+
+
+<form method="get" class="card">
+    <h2 class="nav-label">Add a new doctor</h2>
+
+    <div class="form-grid">
+        <div>
+            <label for="full_name">Full name</label>
+            <input type="text" id="full_name" name="full_name" placeholder="Dr. Salma Akter">
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="salma@doctorconnect.com">
+        </div>
+    </div>
+
+    <div class="form-grid">
+        <div>
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" placeholder="01XXXXXXXXX">
+        </div>
+        <div>
+            <label for="password">Temporary password</label>
+            <input type="text" id="password" name="password" placeholder="the doctor changes it later">
+        </div>
+    </div>
+
+    <div class="form-grid">
+        <div>
+            <label for="dept_id">Department</label>
+            <select id="dept_id" name="dept_id">
+                <option value="0">-- choose --</option>
+                                    <option value="1">Cardiology</option>
+                                    <option value="5">ENT</option>
+                                    <option value="4">Gynecology</option>
+                                    <option value="2">Medicine</option>
+                                    <option value="3">Orthopedics</option>
+                            </select>
+        </div>
+        <div>
+            <label for="consultation_fee">Consultation fee (Tk)</label>
+            <input type="number" id="consultation_fee" name="consultation_fee" step="1" min="0" value="500">
+        </div>
+    </div>
+
+    <label for="specialization">Specialization</label>
+    <input type="text" id="specialization" name="specialization" placeholder="Heart Specialist, MBBS, MD">
+
+    <div class="form-grid">
+        <div>
+            <label for="available_time">Visiting hours</label>
+            <input type="text" id="available_time" name="available_time" placeholder="Sun-Thu, 5 PM - 8 PM">
+        </div>
+        <div>
+            <label for="room">Room</label>
+            <input type="text" id="room" name="room" maxlength="20" placeholder="304, 3rd floor">
+        </div>
+    </div>
+
+    <input type="submit" name="add" value="Add doctor" class="btn btn-block">
+</form>
+
+<div class="card">
+    <h2 class="nav-label">All doctors</h2>
+
+    
+    <div class="table-wrap">
+    <table>
+        <tr>
+            <th>Doctor</th><th>Department</th><th>Fee</th>
+            <th>Visiting hours</th><th>Room</th><th>Save</th><th>Remove</th>
+        </tr>
+
+                <tr>
+            <td>
+                Dr. Rahim Uddin<br>
+                <span class="muted-inline">rahim@doctorconnect.com</span>
+            </td>
+            <td>
+                <form method="get" class="inline-form" id="f2">
+                    <input type="hidden" name="doctor_id" value="2">
+                    <select name="dept_id">
+                                                    <option value="1"
+                                selected>
+                                Cardiology                            </option>
+                                                    <option value="5"
+                                >
+                                ENT                            </option>
+                                                    <option value="4"
+                                >
+                                Gynecology                            </option>
+                                                    <option value="2"
+                                >
+                                Medicine                            </option>
+                                                    <option value="3"
+                                >
+                                Orthopedics                            </option>
+                                            </select>
+            </td>
+            <td>
+                <input type="number" name="consultation_fee" step="1" min="0"
+                       value="600" style="width:90px">
+            </td>
+            <td>
+                <input type="text" name="available_time" value="Sat-Wed, 6 PM - 9 PM">
+                <input type="hidden" name="specialization" value="Cardiology, MBBS">
+            </td>
+            <td>
+                <input type="text" name="room" value="306" style="width:90px">
+            </td>
+            <td>
+                <input type="submit" name="update" value="Save" class="btn btn-small">
+                </form>
+            </td>
+            <td>
+                <form method="get" class="inline-form"
+                      onsubmit="return confirm('Remove this doctor?')">
+                    <input type="hidden" name="doctor_id" value="2">
+                    <input type="submit" name="remove" value="Remove" class="btn btn-small btn-danger">
+                </form>
+            </td>
+        </tr>
+                <tr>
+            <td>
+                Dr. Salma Akter<br>
+                <span class="muted-inline">salma@doctorconnect.com</span>
+            </td>
+            <td>
+                <form method="get" class="inline-form" id="f1">
+                    <input type="hidden" name="doctor_id" value="1">
+                    <select name="dept_id">
+                                                    <option value="1"
+                                selected>
+                                Cardiology                            </option>
+                                                    <option value="5"
+                                >
+                                ENT                            </option>
+                                                    <option value="4"
+                                >
+                                Gynecology                            </option>
+                                                    <option value="2"
+                                >
+                                Medicine                            </option>
+                                                    <option value="3"
+                                >
+                                Orthopedics                            </option>
+                                            </select>
+            </td>
+            <td>
+                <input type="number" name="consultation_fee" step="1" min="0"
+                       value="800" style="width:90px">
+            </td>
+            <td>
+                <input type="text" name="available_time" value="Sun-Thu, 5 PM - 8 PM">
+                <input type="hidden" name="specialization" value="Heart Specialist, MBBS, MD">
+            </td>
+            <td>
+                <input type="text" name="room" value="304" style="width:90px">
+            </td>
+            <td>
+                <input type="submit" name="update" value="Save" class="btn btn-small">
+                </form>
+            </td>
+            <td>
+                <form method="get" class="inline-form"
+                      onsubmit="return confirm('Remove this doctor?')">
+                    <input type="hidden" name="doctor_id" value="1">
+                    <input type="submit" name="remove" value="Remove" class="btn btn-small btn-danger">
+                </form>
+            </td>
+        </tr>
+                <tr>
+            <td>
+                Dr. Tanvir Hasan<br>
+                <span class="muted-inline">tanvir@doctorconnect.com</span>
+            </td>
+            <td>
+                <form method="get" class="inline-form" id="f3">
+                    <input type="hidden" name="doctor_id" value="3">
+                    <select name="dept_id">
+                                                    <option value="1"
+                                >
+                                Cardiology                            </option>
+                                                    <option value="5"
+                                >
+                                ENT                            </option>
+                                                    <option value="4"
+                                >
+                                Gynecology                            </option>
+                                                    <option value="2"
+                                >
+                                Medicine                            </option>
+                                                    <option value="3"
+                                selected>
+                                Orthopedics                            </option>
+                                            </select>
+            </td>
+            <td>
+                <input type="number" name="consultation_fee" step="1" min="0"
+                       value="1000" style="width:90px">
+            </td>
+            <td>
+                <input type="text" name="available_time" value="Fri, 4 PM - 7 PM">
+                <input type="hidden" name="specialization" value="Orthopedic Surgeon, MBBS, FCPS">
+            </td>
+            <td>
+                <input type="text" name="room" value="210" style="width:90px">
+            </td>
+            <td>
+                <input type="submit" name="update" value="Save" class="btn btn-small">
+                </form>
+            </td>
+            <td>
+                <form method="get" class="inline-form"
+                      onsubmit="return confirm('Remove this doctor?')">
+                    <input type="hidden" name="doctor_id" value="3">
+                    <input type="submit" name="remove" value="Remove" class="btn btn-small btn-danger">
+                </form>
+            </td>
+        </tr>
+            </table>
+    </div>
+
+    </div>
+
+        <div class="footer">
+            DoctorConnect &middot; CSC 3215 Web Technologies &middot; Group 6, Section F &middot; Summer 2025-26
+        </div>
+
+        </div><!-- .container -->
+    </main>
+</div><!-- .shell -->
+
+</body>
+</html>
