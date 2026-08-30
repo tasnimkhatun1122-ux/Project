@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Front desk</title>
+
+    <link rel="stylesheet" href="../CSS/receptionist.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-top">
+
+                <div class="brand">
+                    <div class="brand-icon">
+                        +
+                    </div>
+
+                    <span class="brand-name">
+                        DoctorConnect
+                    </span>
+                </div>
+
+                <ul class="sidebar-nav" id="sidebarNav">
+
+                    <li class="nav-item active" data-nav="front-desk">
+                        <span class="nav-dot"></span>
+                        Front desk
+                    </li>
+
+                    <li class="nav-item" data-nav="book-walkin">
+                        <span class="nav-dot"></span>
+                        Book walk-in
+                    </li>
+
+                    <li class="nav-item" data-nav="todays-queue">
+                        <span class="nav-dot"></span>
+                        Today's queue
+                    </li>
+
+                    <li class="nav-item" data-nav="patients">
+                        <span class="nav-dot"></span>
+                        Patients
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="sidebar-bottom">
+
+                <div class="user-avatar"></div>
+
+                <div>
+                    <div class="user-name">
+                        Uzma N. Sanary
+                    </div>
+
+                    <div class="user-role">
+                        Receptionist
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <main class="main-content">
+
+            <div class="page-header">
+
+                <div>
+                    <h1 class="page-title">
+                        Front desk
+                    </h1>
+
+                    <p class="page-subtitle">
+                        Check in arriving patients and book walk-in appointments.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    id="newWalkinBtn"
+                    class="btn-primary">
+                    + New walk-in
+                </button>
+
+            </div>
+
+
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-value" id="statAppointments">
+                        31
+                    </div>
+
+                    <div class="stat-label">
+                        Appointments today
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-value" id="statCheckedIn">
+                        18
+                    </div>
+
+                    <div class="stat-label">
+                        Checked in
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-value amber" id="statWaiting">
+                        9
+                    </div>
+
+                    <div class="stat-label">
+                        Waiting
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-value red" id="statNoShow">
+                        4
+                    </div>
+
+                    <div class="stat-label">
+                        No show
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <section class="content-grid">
+
+                <div class="card queue-card">
+
+                    <h2 class="card-title">
+                        Today's queue
+                    </h2>
+
+                    <div class="table-scroll">
+
+                        <table class="queue-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Serial</th>
+                                    <th>Patient</th>
+                                    <th>Doctor</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="queueBody">
+
+                                <tr>
+                                    <td class="cell-serial">#01</td>
+                                    <td class="cell-patient">Rahim Uddin</td>
+                                    <td class="cell-doctor">Dr. F. Yasmin</td>
+                                    <td class="cell-time">09:00 AM</td>
+                                    <td>
+                                        <span class="status-badge status-seen">
+                                            Seen
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="action-none">—</span>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td class="cell-serial">#02</td>
+                                    <td class="cell-patient">Ayesha Siddiqua</td>
+                                    <td class="cell-doctor">Dr. F. Yasmin</td>
+                                    <td class="cell-time">09:30 AM</td>
+                                    <td>
+                                        <span class="status-badge status-seen">
+                                            Seen
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="action-none">—</span>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td class="cell-serial">#03</td>
+                                    <td class="cell-patient">Kamrul Hasan</td>
+                                    <td class="cell-doctor">Dr. F. Yasmin</td>
+                                    <td class="cell-time">10:00 AM</td>
+                                    <td>
+                                        <span class="status-badge status-seen">
+                                            Seen
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="action-none">—</span>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td class="cell-serial">#04</td>
+                                    <td class="cell-patient">Nilima Salam</td>
+                                    <td class="cell-doctor">Dr. F. Yasmin</td>
+                                    <td class="cell-time">10:30 AM</td>
+                                    <td>
+                                        <span class="status-badge status-waiting">
+                                            Waiting
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            class="action-link"
+                                            data-action="checkin">
+                                            Check in
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td class="cell-serial">#05</td>
+                                    <td class="cell-patient">Sabbir Ahmed</td>
+                                    <td class="cell-doctor">Dr. F. Yasmin</td>
+                                    <td class="cell-time">11:00 AM</td>
+                                    <td>
+                                        <span class="status-badge status-waiting">
+                                            Waiting
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            class="action-link"
+                                            data-action="checkin">
+                                            Check in
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td class="cell-serial">#06</td>
+                                    <td class="cell-patient">Mim Khatun</td>
+                                    <td class="cell-doctor">Dr. I. Kabir</td>
+                                    <td class="cell-time">11:15 AM</td>
+                                    <td>
+                                        <span class="status-badge status-noshow">
+                                            No show
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            class="action-link"
+                                            data-action="rebook">
+                                            Rebook
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td class="cell-serial">#07</td>
+                                    <td class="cell-patient">Farida Begum</td>
+                                    <td class="cell-doctor">Dr. S. Rahman</td>
+                                    <td class="cell-time">11:30 AM</td>
+                                    <td>
+                                        <span class="status-badge status-waiting">
+                                            Waiting
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button
+                                            type="button"
+                                            class="action-link"
+                                            data-action="checkin">
+                                            Check in
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card booking-card">
+
+                    <h2 class="booking-title">
+                        Quick walk-in booking
+                    </h2>
+
+
+                    <form id="walkinForm">
+
+                        <div class="form-group">
+
+                            <label
+                                for="patientName"
+                                class="form-label">
+                                Patient name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="patientName"
+                                name="patientName"
+                                class="form-input"
+                                placeholder="Full name"
+                                autocomplete="off">
+
+                            <p
+                                id="patientNameError"
+                                class="error-message">
+                                Please enter the patient's name.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="patientPhone"
+                                class="form-label">
+                                Phone
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="patientPhone"
+                                name="patientPhone"
+                                class="form-input"
+                                placeholder="01XXXXXXXXX"
+                                autocomplete="off">
+
+                            <p
+                                id="patientPhoneError"
+                                class="error-message">
+                                Please enter a valid phone number.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="walkinDoctor"
+                                class="form-label">
+                                Doctor
+                            </label>
+
+                            <select
+                                id="walkinDoctor"
+                                name="walkinDoctor"
+                                class="form-select placeholder">
+
+                                <option value="" disabled selected>
+                                    Select doctor
+                                </option>
+
+                                <option value="F. Yasmin">
+                                    Dr. F. Yasmin
+                                </option>
+
+                                <option value="I. Kabir">
+                                    Dr. I. Kabir
+                                </option>
+
+                                <option value="S. Rahman">
+                                    Dr. S. Rahman
+                                </option>
+
+                            </select>
+
+                            <p
+                                id="walkinDoctorError"
+                                class="error-message">
+                                Please select a doctor.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="walkinSlot"
+                                class="form-label">
+                                Time slot
+                            </label>
+
+                            <select
+                                id="walkinSlot"
+                                name="walkinSlot"
+                                class="form-select placeholder">
+
+                                <option value="" disabled selected>
+                                    Next available
+                                </option>
+
+                                <option value="next">
+                                    Next available
+                                </option>
+
+                                <option value="12:00 PM">
+                                    12:00 PM
+                                </option>
+
+                                <option value="12:30 PM">
+                                    12:30 PM
+                                </option>
+
+                                <option value="01:00 PM">
+                                    01:00 PM
+                                </option>
+
+                            </select>
+
+                            <p
+                                id="walkinSlotError"
+                                class="error-message">
+                                Please select a time slot.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn-confirm">
+                            Confirm walk-in
+                        </button>
+
+
+                        <p
+                            id="bookingSuccess"
+                            class="booking-success">
+                            Walk-in added to today's queue!
+                        </p>
+
+
+                        <p class="booking-note">
+                            Walk-in patients are added to the end of the selected doctor's queue for today.
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script>
+
+
+        const navItems =
+            document.querySelectorAll(".nav-item");
+
+
+        navItems.forEach(function (item) {
+
+            item.addEventListener("click", function () {
+
+                navItems.forEach(function (i) {
+                    i.classList.remove("active");
+                });
+
+                item.classList.add("active");
+
+            });
+
+        });
+
+
+        const newWalkinBtn =
+            document.getElementById("newWalkinBtn");
+
+        const patientNameInput =
+            document.getElementById("patientName");
+
+
+        newWalkinBtn.addEventListener("click", function () {
+
+            patientNameInput.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            patientNameInput.focus();
+
+        });
+
+
+
+        const statCheckedIn =
+            document.getElementById("statCheckedIn");
+
+        const statWaiting =
+            document.getElementById("statWaiting");
+
+        const statAppointments =
+            document.getElementById("statAppointments");
+
+
+        function updateStat(el, delta) {
+
+            el.textContent =
+                parseInt(el.textContent, 10) + delta;
+
+        }
+
+
+
+        const queueBody =
+            document.getElementById("queueBody");
+
+
+        queueBody.addEventListener("click", function (event) {
+
+            const button =
+                event.target.closest(".action-link");
+
+            if (!button) {
+                return;
+            }
+
+            const row =
+                button.closest("tr");
+
+            const statusCell =
+                row.querySelector(".status-badge");
+
+
+            if (button.dataset.action === "checkin") {
+
+                statusCell.textContent = "Seen";
+
+                statusCell.classList.remove("status-waiting");
+
+                statusCell.classList.add("status-seen");
+
+
+                const actionCell =
+                    document.createElement("span");
+
+                actionCell.className =
+                    "action-none";
+
+                actionCell.textContent = "—";
+
+                button.replaceWith(actionCell);
+
+
+                updateStat(statCheckedIn, 1);
+
+                updateStat(statWaiting, -1);
+
+            }
+
+
+            else if (button.dataset.action === "rebook") {
+
+                statusCell.textContent = "Waiting";
+
+                statusCell.classList.remove("status-noshow");
+
+                statusCell.classList.add("status-waiting");
+
+
+                button.textContent = "Check in";
+
+                button.dataset.action = "checkin";
+
+
+                updateStat(statWaiting, 1);
+
+            }
+
+        });
+
+
+        /* ---- Quick walk-in booking form ---- */
+
+        const walkinForm =
+            document.getElementById("walkinForm");
+
+        const patientPhoneInput =
+            document.getElementById("patientPhone");
+
+        const walkinDoctorSelect =
+            document.getElementById("walkinDoctor");
+
+        const walkinSlotSelect =
+            document.getElementById("walkinSlot");
+
+        const patientNameError =
+            document.getElementById("patientNameError");
+
+        const patientPhoneError =
+            document.getElementById("patientPhoneError");
+
+        const walkinDoctorError =
+            document.getElementById("walkinDoctorError");
+
+        const walkinSlotError =
+            document.getElementById("walkinSlotError");
+
+        const bookingSuccess =
+            document.getElementById("bookingSuccess");
+
+
+        function isValidPhone(phone) {
+
+            const phonePattern =
+                /^[0-9+\-\s]{7,15}$/;
+
+            return phonePattern.test(phone);
+
+        }
+
+
+        function toggleSelectPlaceholder(select) {
+
+            if (select.value === "") {
+
+                select.classList.add("placeholder");
+
+            }
+
+            else {
+
+                select.classList.remove("placeholder");
+
+            }
+
+        }
+
+
+        [
+            walkinDoctorSelect,
+            walkinSlotSelect
+        ].forEach(function (select) {
+
+            select.addEventListener("change", function () {
+
+                toggleSelectPlaceholder(select);
+
+            });
+
+        });
+
+
+        walkinForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            patientNameError.classList.remove("show");
+
+            patientPhoneError.classList.remove("show");
+
+            walkinDoctorError.classList.remove("show");
+
+            walkinSlotError.classList.remove("show");
+
+            bookingSuccess.classList.remove("show");
+
+
+            let isValid = true;
+
+
+            const patientName =
+                patientNameInput.value.trim();
+
+
+            if (patientName === "") {
+
+                patientNameError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+
+            const patientPhone =
+                patientPhoneInput.value.trim();
+
+
+            if (patientPhone === "") {
+
+                patientPhoneError.textContent =
+                    "Please enter the patient's phone number.";
+
+                patientPhoneError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+            else if (!isValidPhone(patientPhone)) {
+
+                patientPhoneError.textContent =
+                    "Please enter a valid phone number.";
+
+                patientPhoneError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+
+            const doctorValue =
+                walkinDoctorSelect.value;
+
+
+            if (doctorValue === "") {
+
+                walkinDoctorError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+
+            const slotValue =
+                walkinSlotSelect.value;
+
+
+            if (slotValue === "") {
+
+                walkinSlotError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+
+            if (!isValid) {
+                return;
+            }
+
+
+            const doctorLabel =
+                walkinDoctorSelect
+                    .options[walkinDoctorSelect.selectedIndex]
+                    .textContent;
+
+
+            const slotLabel =
+                slotValue === "next"
+                    ? "Next available"
+                    : slotValue;
+
+
+            addWalkinRow(
+                patientName,
+                doctorLabel,
+                slotLabel
+            );
+
+
+            bookingSuccess.classList.add("show");
+
+
+            walkinForm.reset();
+
+
+            toggleSelectPlaceholder(
+                walkinDoctorSelect
+            );
+
+            toggleSelectPlaceholder(
+                walkinSlotSelect
+            );
+
+        });
+
+
+        function addWalkinRow(name, doctor, time) {
+
+            const rowCount =
+                queueBody.querySelectorAll("tr").length + 1;
+
+
+            const serial =
+                "#" + String(rowCount).padStart(2, "0");
+
+
+            const row =
+                document.createElement("tr");
+
+
+            row.innerHTML =
+
+                '<td class="cell-serial">' +
+                serial +
+                '</td>' +
+
+                '<td class="cell-patient">' +
+                escapeHtml(name) +
+                '</td>' +
+
+                '<td class="cell-doctor">Dr. ' +
+                escapeHtml(
+                    doctor.replace("Dr. ", "")
+                ) +
+                '</td>' +
+
+                '<td class="cell-time">' +
+                escapeHtml(time) +
+                '</td>' +
+
+                '<td>' +
+                '<span class="status-badge status-waiting">' +
+                'Waiting' +
+                '</span>' +
+                '</td>' +
+
+                '<td>' +
+                '<button type="button" class="action-link" data-action="checkin">' +
+                'Check in' +
+                '</button>' +
+                '</td>';
+
+
+            queueBody.appendChild(row);
+
+
+            updateStat(statAppointments, 1);
+
+            updateStat(statWaiting, 1);
+
+        }
+
+
+        function escapeHtml(value) {
+
+            const div =
+                document.createElement("div");
+
+            div.textContent = value;
+
+            return div.innerHTML;
+
+        }
+
+
+        [
+            patientNameInput,
+            patientPhoneInput
+        ].forEach(function (input) {
+
+            input.addEventListener("input", function () {
+
+                bookingSuccess.classList.remove("show");
+
+            });
+
+        });
+
+
+        patientNameInput.addEventListener("input", function () {
+
+            if (patientNameInput.value.trim() !== "") {
+
+                patientNameError.classList.remove("show");
+
+            }
+
+        });
+
+
+        patientPhoneInput.addEventListener("input", function () {
+
+            if (patientPhoneInput.value.trim() !== "") {
+
+                patientPhoneError.classList.remove("show");
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
