@@ -1,0 +1,106 @@
+<!-- Static export of the Doctor interface for DoctorConnect.
+     The working PHP version of these screens is in ../PHP/. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Appointments &mdash; DoctorConnect</title>
+    <link rel="stylesheet" href="../CSS/doctor.css">
+</head>
+<body>
+
+
+<div class="shell">
+    <nav class="sidebar">
+        <a href="doctorDashboard.html" class="brand">
+            <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M6 17.5h4.2l2.1-5.4 3.4 9.2 2.4-6 1.6 2.2H26" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>            <span class="logo">DoctorConnect</span>
+        </a>
+
+        <div class="nav-label">Menu</div>
+        <div class="navlinks">
+            <a href="doctorDashboard.html" class="on"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><span>Appointments</span></a><a href="doctorProfile.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3v6a5 5 0 0 0 10 0V3"/><path d="M4 3h3M15 3h3"/><path d="M11 14v2a5 5 0 0 0 9 3"/><circle cx="20" cy="17" r="2"/></svg><span>My Profile</span></a>        </div>
+
+        <div class="nav-label">Account</div>
+        <div class="navlinks">
+            <a href="#"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg><span>My Account</span></a>        </div>
+
+        <div class="side-foot">
+            <div class="whoami">
+                <span class="avatar">SA</span>
+                <span>
+                    <span class="whoami-name">Dr. Salma Akter</span>
+                    <span class="role role-doctor">doctor</span>
+                </span>
+            </div>
+            <a href="#" class="btn-logout"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 17l5-5-5-5"/><path d="M20 12H9"/><path d="M12 20H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/></svg> <span>Log out</span></a>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+
+
+<div class="page-head">
+    <div>
+        <h1>Today&rsquo;s schedule</h1>
+        <p class="muted">Appointments booked with you for the selected date.</p>
+    </div>
+    <a href="doctorProfile.html" class="btn btn-small btn-ghost"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3v6a5 5 0 0 0 10 0V3"/><path d="M4 3h3M15 3h3"/><path d="M11 14v2a5 5 0 0 0 9 3"/><circle cx="20" cy="17" r="2"/></svg> My profile</a>
+</div>
+
+<div class="stat-row">
+    <div class="stat"><span class="stat-num">1</span><span class="stat-label">Appointments</span><span class="stat-sub">on this date</span></div>
+    <div class="stat"><span class="stat-num">0</span><span class="stat-label">Completed</span><span class="stat-sub">visit finished</span></div>
+    <div class="stat"><span class="stat-num">1</span><span class="stat-label">Still to see</span><span class="stat-sub">pending or confirmed</span></div>
+    <div class="stat"><span class="stat-num">800</span><span class="stat-label">Expected fees</span><span class="stat-sub">Tk, visits not yet done</span></div>
+</div>
+
+<div class="card">
+    <form method="GET" class="inline-form">
+        <label for="date">Showing appointments for</label>
+        <input type="date" id="date" name="date" value="2026-08-30">
+        <button type="submit" class="btn btn-small btn-ghost">Show</button>
+            </form>
+</div>
+
+<div class="card">
+
+    <div class="table-wrap">
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>Patient</th>
+            <th>Phone</th>
+            <th>Diagnosis</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+                <tr>
+            <td><strong>10:00 AM - 10:30 AM</strong></td>
+            <td>Nusrat Jahan</td>
+            <td><span class="muted-inline">01644444444</span></td>
+            <td>
+                                    <span class="muted-inline">&mdash;</span>
+                            </td>
+            <td><span class="status status-pending">pending</span></td>
+            <td>
+                                    <a href="#" class="btn btn-small">Start visit</a>
+                            </td>
+        </tr>
+            </table>
+    </div>
+
+</div>
+
+        <div class="footer">
+            DoctorConnect &middot; CSC 3215 Web Technologies &middot; Group 6, Section F &middot; Summer 2025-26
+        </div>
+
+        </div><!-- .container -->
+    </main>
+</div><!-- .shell -->
+
+</body>
+</html>
