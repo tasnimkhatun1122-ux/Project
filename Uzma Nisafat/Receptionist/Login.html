@@ -7,7 +7,7 @@
 
     <title>Login</title>
 
- <!-- CSS -->
+    <!-- CSS -->
 
     <style>
         * {
@@ -29,6 +29,7 @@
 
             overflow: hidden;
         }
+
         .login-page {
             width: 100vw;
             height: 100vh;
@@ -52,7 +53,6 @@
             justify-content: center;
         }
 
-
         .brand {
             display: flex;
             align-items: center;
@@ -61,7 +61,6 @@
 
             margin-bottom: 36px;
         }
-
 
         .brand-icon {
             width: 33px;
@@ -83,12 +82,10 @@
             line-height: 1;
         }
 
-
         .brand-name {
             font-size: 18px;
             font-weight: 700;
         }
-
 
         .intro-title {
             font-size: 34px;
@@ -118,7 +115,6 @@
             list-style: none;
         }
 
-
         .feature-list li {
             position: relative;
 
@@ -132,7 +128,6 @@
 
             color: rgba(255, 255, 255, 0.92);
         }
-
 
         .feature-list li::before {
             content: "";
@@ -150,7 +145,6 @@
             border-radius: 50%;
         }
 
-
         .login-section {
             width: 61%;
 
@@ -161,7 +155,6 @@
             align-items: center;
             justify-content: center;
         }
-
 
         .login-card {
             width: 293px;
@@ -178,7 +171,6 @@
                 0 7px 20px rgba(30, 55, 65, 0.10);
         }
 
-
         .login-title {
             font-size: 25px;
 
@@ -189,7 +181,6 @@
             color: #17232b;
         }
 
-
         .login-subtitle {
             font-size: 12px;
 
@@ -198,12 +189,9 @@
             margin-bottom: 19px;
         }
 
-
-
         .form-group {
             margin-bottom: 15px;
         }
-
 
         .form-label {
             display: block;
@@ -216,8 +204,6 @@
 
             margin-bottom: 7px;
         }
-
-
 
         .form-input {
             width: 100%;
@@ -243,11 +229,9 @@
                 box-shadow 0.2s ease;
         }
 
-
         .form-input::placeholder {
             color: #a9b3b8;
         }
-
 
         .form-input:focus {
             border-color: #13838d;
@@ -255,7 +239,6 @@
             box-shadow:
                 0 0 0 2px rgba(19, 131, 141, 0.08);
         }
-
 
         .login-button {
             width: 100%;
@@ -283,16 +266,13 @@
                 transform 0.1s ease;
         }
 
-
         .login-button:hover {
             background-color: #0f7079;
         }
 
-
         .login-button:active {
             transform: scale(0.99);
         }
-
 
         .register-text {
             text-align: center;
@@ -304,7 +284,6 @@
             margin-top: 17px;
         }
 
-
         .register-link {
             color: #13838d;
 
@@ -313,11 +292,9 @@
             font-weight: 600;
         }
 
-
         .register-link:hover {
             text-decoration: underline;
         }
-
 
         .error-message {
             display: none;
@@ -329,11 +306,9 @@
             margin-top: 5px;
         }
 
-
         .error-message.show {
             display: block;
         }
-
 
         .success-message {
             display: none;
@@ -347,19 +322,15 @@
             margin-top: 12px;
         }
 
-
         .success-message.show {
             display: block;
         }
-
-
 
         @media (max-width: 750px) {
 
             body {
                 overflow: auto;
             }
-
 
             .login-page {
                 width: 100vw;
@@ -371,13 +342,11 @@
                 flex-direction: column;
             }
 
-
             .login-intro {
                 width: 100%;
 
                 padding: 45px 40px;
             }
-
 
             .login-section {
                 width: 100%;
@@ -385,12 +354,10 @@
                 padding: 45px 20px;
             }
 
-
             .intro-title {
                 font-size: 30px;
             }
         }
-
 
         @media (max-width: 450px) {
 
@@ -398,11 +365,9 @@
                 padding: 35px 25px;
             }
 
-
             .login-section {
                 padding: 35px 15px;
             }
-
 
             .login-card {
                 width: 100%;
@@ -410,11 +375,9 @@
                 max-width: 293px;
             }
 
-
             .intro-title {
                 font-size: 27px;
             }
-
 
             .brand-name {
                 font-size: 17px;
@@ -429,13 +392,9 @@
 
 <body>
 
-
-
     <main class="login-page">
 
-
         <section class="login-intro">
-
 
             <div class="brand">
 
@@ -453,7 +412,6 @@
                 Book your doctor,<br>
                 skip the queue.
             </h1>
-
 
             <p class="intro-description">
                 An online appointment system for the hospital
@@ -479,29 +437,23 @@
 
         </section>
 
-
-
         <section class="login-section">
 
-
-          
-
             <div class="login-card">
-
 
                 <h2 class="login-title">
                     Log in
                 </h2>
 
-
                 <p class="login-subtitle">
                     Enter your account details to continue.
                 </p>
 
-
-
-                <form id="loginForm">
-
+                <!-- FIXED: Added action -->
+                <form
+                    id="loginForm"
+                    method="POST"
+                    action="../PHP/login.php">
 
                     <div class="form-group">
 
@@ -513,7 +465,6 @@
 
                         </label>
 
-
                         <input
                             type="email"
                             id="email"
@@ -522,7 +473,6 @@
                             placeholder="you@example.com"
                             autocomplete="email"
                         >
-
 
                         <p
                             id="emailError"
@@ -534,7 +484,6 @@
 
                     </div>
 
-
                     <div class="form-group">
 
                         <label
@@ -545,7 +494,6 @@
 
                         </label>
 
-
                         <input
                             type="password"
                             id="password"
@@ -554,7 +502,6 @@
                             placeholder="••••••••"
                             autocomplete="current-password"
                         >
-
 
                         <p
                             id="passwordError"
@@ -566,13 +513,13 @@
 
                     </div>
 
-<button
-    type="submit"
-    class="login-button">
-    Log in
-</button>
+                    <button
+                        type="submit"
+                        class="login-button">
 
+                        Log in
 
+                    </button>
 
                     <p
                         id="successMessage"
@@ -583,8 +530,6 @@
                     </p>
 
                 </form>
-
-
 
                 <p class="register-text">
 
@@ -600,18 +545,15 @@
 
                 </p>
 
-
             </div>
 
         </section>
 
     </main>
 
- <!-- JS -->
-   
+    <!-- JS -->
 
     <script>
-
 
         const loginForm =
             document.getElementById("loginForm");
@@ -632,25 +574,19 @@
             document.getElementById("successMessage");
 
 
-
         loginForm.addEventListener("submit", function (event) {
 
-            event.preventDefault();
-
-
             emailError.classList.remove("show");
-
             passwordError.classList.remove("show");
-
             successMessage.classList.remove("show");
 
-
             let isValid = true;
-
 
             const email =
                 emailInput.value.trim();
 
+
+            /* Email validation */
 
             if (email === "") {
 
@@ -675,9 +611,10 @@
             }
 
 
+            /* Password validation */
 
             const password =
-                passwordInput.value.trim();
+                passwordInput.value;
 
 
             if (password === "") {
@@ -692,12 +629,34 @@
             }
 
 
-if (isValid) {
-    window.location.href = "receptionistDashboard.html";
-}
+            /*
+                If validation fails,
+                stop form submission.
+            */
+
+            if (!isValid) {
+
+                event.preventDefault();
+
+                return;
+
+            }
+
+            /*
+                If validation succeeds,
+                DO NOT preventDefault().
+
+                The browser will submit:
+
+                POST ../PHP/login.php
+
+                Then login.php will create the
+                session and redirect to:
+
+                receptionistDashboard.php
+            */
 
         });
-
 
 
         function isValidEmail(email) {
@@ -725,7 +684,7 @@ if (isValid) {
 
         passwordInput.addEventListener("input", function () {
 
-            if (passwordInput.value.trim() !== "") {
+            if (passwordInput.value !== "") {
 
                 passwordError.classList.remove("show");
 

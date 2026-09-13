@@ -482,7 +482,7 @@
 
 
 
-                <form id="registerForm">
+                <form id="registerForm" action="../PHP/register.php" method="POST">
 
 
                     <div class="form-row">
@@ -969,32 +969,60 @@
 
             }
 
-
-
             if (isValid) {
 
-                successMessage.classList.add("show");
+                const formData = new FormData(registerForm);
 
-                console.log("Register form submitted");
+                fetch("../PHP/register.php", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(function (response) {
+                    return response.text();
+                })
+                .then(function (result) {
 
-                console.log("Full name:", fullName);
+                    if (result.includes("Account created successfully!")) {
 
-                console.log("Email:", email);
+                        successMessage.textContent =
+                            "Account created successfully!";
 
-                console.log("Phone:", phone);
+                        successMessage.classList.add("show");
 
-                console.log("Role:", role);
+                        registerForm.reset();
+
+                    } else {
+
+                        successMessage.textContent = result;
+
+                        successMessage.style.color = "#d64545";
+
+                        successMessage.classList.add("show");
+
+                    }
+
+                })
+                .catch(function (error) {
+
+                    successMessage.textContent =
+                        "Something went wrong. Please try again.";
+
+                    successMessage.style.color = "#d64545";
+
+                    successMessage.classList.add("show");
+
+                    console.error(error);
+
+                });
 
             }
 
         });
 
-
-
         function isValidEmail(email) {
 
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+           const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             return emailPattern.test(email);
 
@@ -1004,7 +1032,7 @@
         function isValidPhone(phone) {
 
             const phonePattern =
-                /^[0-9+\-\s]{7,15}$/;
+    /^[0-9+\-\s]{7,15}$/;
 
             return phonePattern.test(phone);
 
@@ -1100,7 +1128,8 @@
         });
 
     </script>
-
+        
 </body>
-
+        
 </html>
+        
