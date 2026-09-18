@@ -39,4 +39,5 @@ class ProfileController
         header("Location: index.php?route=profile");
         exit();
     }
+    
 }
