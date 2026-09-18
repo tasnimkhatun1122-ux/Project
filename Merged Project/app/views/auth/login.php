@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login &mdash; DoctorConnect</title>
-    <link rel="stylesheet" href="../CSS/admin.css">
-</head>
-<body>
-
-
-
 <div class="split">
 
     <aside class="split-brand">
-        <a href="index.html" class="split-logo">
-            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M6 17.5h4.2l2.1-5.4 3.4 9.2 2.4-6 1.6 2.2H26" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>            <span>DoctorConnect</span>
+        <a href="<?php echo BASE_URL; ?>/index.php" class="split-logo">
+            <?php echo logo_mark(40); ?>
+            <span><?php echo APP_NAME; ?></span>
         </a>
 
         <h1 class="split-title">Book your doctor,<br>skip the queue.</h1>
@@ -34,10 +23,13 @@
             <h1>Log in</h1>
             <p class="muted">Enter your account details to continue.</p>
 
-            
-            <form method="post" action="login.php">
+            <?php if ($error != ""): ?>
+                <div class="alert-error"><?php echo $error; ?></div>
+            <?php endif; ?>
+
+            <form method="post" action="<?php echo BASE_URL; ?>/index.php?url=auth/login">
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" value=""
+                <input type="text" id="email" name="email" value="<?php echo $email; ?>"
                        placeholder="you@example.com">
 
                 <label for="password">Password</label>
@@ -46,7 +38,8 @@
                 <input type="submit" name="submit" value="Log in" class="btn btn-block">
             </form>
 
-            <p class="auth-alt">Don&rsquo;t have an account? <a href="register.html">Register</a></p>
+            <p class="auth-alt">Don&rsquo;t have an account?
+               <a href="<?php echo BASE_URL; ?>/index.php?url=auth/register">Register</a></p>
 
             <div class="demo-box">
                 <strong>Demo accounts</strong> (password for all: <code>1234</code>)<br>
@@ -59,8 +52,3 @@
     </main>
 
 </div>
-
-
-
-</body>
-</html>

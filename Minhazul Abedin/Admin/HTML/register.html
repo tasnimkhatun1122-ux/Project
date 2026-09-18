@@ -1,6 +1,3 @@
-<!-- Static export of the Admin interface for DoctorConnect.
-     Built by Minhazul Abedin (21-44625-1).
-     The working PHP version of these screens is in ../PHP/. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,58 +9,82 @@
 <body>
 
 
-<div class="plain-top">
-    <div class="inner">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M6 17.5h4.2l2.1-5.4 3.4 9.2 2.4-6 1.6 2.2H26" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>        <span class="logo">DoctorConnect</span>
-        <span class="tagline">Online Doctor Appointment Management System</span>
-    </div>
-</div>
-<div class="plain-wrap">
 
+<div class="split">
 
-<div class="auth-wrap">
-    <div class="card auth-card">
-        <h1>Create a patient account</h1>
-        <p class="muted">Register to book appointments with our doctors.</p>
+    <aside class="split-brand split-brand-narrow">
+        <a href="index.html" class="split-logo">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M6 17.5h4.2l2.1-5.4 3.4 9.2 2.4-6 1.6 2.2H26" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>            <span>DoctorConnect</span>
+        </a>
 
-        
-        <!-- onsubmit="return checkForm()" - the word return is required.
-             Without it the browser ignores the false and submits anyway. -->
-        <form method="get" action="register.html" onsubmit="return checkForm()">
+        <h1 class="split-title">Create your<br>account.</h1>
 
-            <label for="full_name">Full Name</label>
-            <input type="text" id="full_name" name="full_name" value="">
-            <span class="field-error"></span>
+        <p class="split-sub">One account for every role in the hospital &mdash;
+           patient, doctor, receptionist and admin.</p>
+    </aside>
 
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" value="">
-            <span class="field-error"></span>
+    <main class="split-form">
+        <div class="card auth-card auth-card-wide">
+            <h1>Register</h1>
+            <p class="muted">Fill in your details to create an account.</p>
 
-            <label for="phone">Phone</label>
-            <input type="text" id="phone" name="phone" value="">
-            <span class="field-error"></span>
+            
+            <form method="post" action="register.php" onsubmit="return checkForm()">
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password">
-            <span class="field-error"></span>
+                <div class="form-grid">
+                    <div>
+                        <label for="full_name">Full name</label>
+                        <input type="text" id="full_name" name="full_name"
+                               value="" placeholder="e.g. Minhazul Abedin">
+                        <span class="field-error"></span>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email"
+                               value="" placeholder="you@example.com">
+                        <span class="field-error"></span>
+                    </div>
+                </div>
 
-            <label for="confirm">Confirm Password</label>
-            <input type="password" id="confirm" name="confirm">
-            <span class="field-error"></span>
+                <div class="form-grid">
+                    <div>
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone" name="phone"
+                               value="" placeholder="01XXXXXXXXX">
+                        <span class="field-error"></span>
+                    </div>
+                    <div>
+                        <label for="role_display">Role</label>
+                        <input type="text" id="role_display" value="Patient" readonly>
+                        <span class="hint">Doctor and staff accounts are created by the admin.</span>
+                    </div>
+                </div>
 
-            <span class="field-error" id="jsError"></span>
+                <div class="form-grid">
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="********">
+                        <span class="field-error"></span>
+                    </div>
+                    <div>
+                        <label for="confirm">Confirm password</label>
+                        <input type="password" id="confirm" name="confirm" placeholder="********">
+                        <span class="field-error"></span>
+                    </div>
+                </div>
 
-            <input type="submit" name="submit" value="Register" class="btn btn-block">
-        </form>
+                <span class="field-error" id="jsError"></span>
 
-        <p class="auth-alt">Already registered? <a href="Login.html">Sign in</a></p>
-    </div>
+                <input type="submit" name="submit" value="Create account" class="btn btn-block">
+            </form>
+
+            <p class="auth-alt">Already registered? <a href="login.html">Log in</a></p>
+        </div>
+    </main>
+
 </div>
 
 <script>
-// CLIENT-SIDE VALIDATION (JavaScript, runs in the browser).
-// This gives instant feedback. The PHP checks above still run on
-// the server, because a visitor can switch JavaScript off.
 function checkForm() {
     var name    = document.getElementById("full_name").value;
     var email   = document.getElementById("email").value;
@@ -87,11 +108,7 @@ function checkForm() {
 }
 </script>
 
-        <div class="footer">
-            DoctorConnect &middot; CSC 3215 Web Technologies &middot; Group 6, Section F &middot; Summer 2025-26
-        </div>
 
-</div><!-- .plain-wrap -->
 
 </body>
 </html>

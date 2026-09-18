@@ -1,6 +1,3 @@
-<!-- Static export of the Admin interface for DoctorConnect.
-     Built by Minhazul Abedin (21-44625-1).
-     The working PHP version of these screens is in ../PHP/. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,17 +11,17 @@
 
 <div class="shell">
     <nav class="sidebar">
-        <a href="adminDashboard.html" class="brand">
+        <a href="admin_dashboard.html" class="brand">
             <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="9" fill="currentColor"/><path d="M6 17.5h4.2l2.1-5.4 3.4 9.2 2.4-6 1.6 2.2H26" stroke="#ffffff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>            <span class="logo">DoctorConnect</span>
         </a>
 
         <div class="nav-label">Administration</div>
         <div class="navlinks">
-            <a href="adminDashboard.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Overview</span></a><a href="manageDoctors.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.5"/><path d="M22 20v-2a4 4 0 0 0-3-3.8"/><path d="M16 3.2A4 4 0 0 1 16 10.8"/></svg><span>Doctors</span></a><a href="manageDepartments.html" class="on"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l9 5-9 5-9-5 9-5Z"/><path d="M3 13l9 5 9-5"/></svg><span>Departments</span></a>        </div>
+            <a href="admin_dashboard.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Overview</span></a><a href="manage_doctors.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.5"/><path d="M22 20v-2a4 4 0 0 0-3-3.8"/><path d="M16 3.2A4 4 0 0 1 16 10.8"/></svg><span>Doctors</span></a><a href="manage_departments.html" class="on"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l9 5-9 5-9-5 9-5Z"/><path d="M3 13l9 5 9-5"/></svg><span>Departments</span></a>        </div>
 
         <div class="nav-label">Account</div>
         <div class="navlinks">
-            <a href="#"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg><span>My Account</span></a>        </div>
+            <a href="profile.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg><span>My Account</span></a>        </div>
 
         <div class="side-foot">
             <div class="whoami">
@@ -34,7 +31,7 @@
                     <span class="role role-admin">admin</span>
                 </span>
             </div>
-            <a href="#" class="btn-logout"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 17l5-5-5-5"/><path d="M20 12H9"/><path d="M12 20H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/></svg> <span>Log out</span></a>
+            <a href="logout.html" class="btn-logout"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 17l5-5-5-5"/><path d="M20 12H9"/><path d="M12 20H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/></svg> <span>Log out</span></a>
         </div>
     </nav>
 
@@ -51,7 +48,7 @@
 
 
 
-<form method="get" class="card">
+<form method="POST" class="card">
     <h2 class="nav-label">Add a department</h2>
     <label for="dept_name">Name</label>
     <input type="text" id="dept_name" name="dept_name" placeholder="e.g. Neurology">
@@ -68,7 +65,7 @@
 
                 <tr>
             <td>
-                <form method="get" class="inline-form">
+                <form method="POST" class="inline-form">
                     <input type="hidden" name="dept_id" value="1">
                     <input type="text" name="dept_name" value="Cardiology">
             </td>
@@ -78,7 +75,7 @@
                 </form>
             </td>
             <td>
-                <form method="get" class="inline-form"
+                <form method="POST" class="inline-form"
                       onsubmit="return confirm('Delete this department?')">
                     <input type="hidden" name="dept_id" value="1">
                     <input type="submit" name="remove" value="Delete" class="btn btn-small btn-danger">
@@ -87,17 +84,17 @@
         </tr>
                 <tr>
             <td>
-                <form method="get" class="inline-form">
+                <form method="POST" class="inline-form">
                     <input type="hidden" name="dept_id" value="5">
                     <input type="text" name="dept_name" value="ENT">
             </td>
-            <td>0</td>
+            <td>1</td>
             <td>
                     <input type="submit" name="rename" value="Save" class="btn btn-small">
                 </form>
             </td>
             <td>
-                <form method="get" class="inline-form"
+                <form method="POST" class="inline-form"
                       onsubmit="return confirm('Delete this department?')">
                     <input type="hidden" name="dept_id" value="5">
                     <input type="submit" name="remove" value="Delete" class="btn btn-small btn-danger">
@@ -106,17 +103,17 @@
         </tr>
                 <tr>
             <td>
-                <form method="get" class="inline-form">
+                <form method="POST" class="inline-form">
                     <input type="hidden" name="dept_id" value="4">
                     <input type="text" name="dept_name" value="Gynecology">
             </td>
-            <td>0</td>
+            <td>1</td>
             <td>
                     <input type="submit" name="rename" value="Save" class="btn btn-small">
                 </form>
             </td>
             <td>
-                <form method="get" class="inline-form"
+                <form method="POST" class="inline-form"
                       onsubmit="return confirm('Delete this department?')">
                     <input type="hidden" name="dept_id" value="4">
                     <input type="submit" name="remove" value="Delete" class="btn btn-small btn-danger">
@@ -125,17 +122,17 @@
         </tr>
                 <tr>
             <td>
-                <form method="get" class="inline-form">
+                <form method="POST" class="inline-form">
                     <input type="hidden" name="dept_id" value="2">
                     <input type="text" name="dept_name" value="Medicine">
             </td>
-            <td>0</td>
+            <td>1</td>
             <td>
                     <input type="submit" name="rename" value="Save" class="btn btn-small">
                 </form>
             </td>
             <td>
-                <form method="get" class="inline-form"
+                <form method="POST" class="inline-form"
                       onsubmit="return confirm('Delete this department?')">
                     <input type="hidden" name="dept_id" value="2">
                     <input type="submit" name="remove" value="Delete" class="btn btn-small btn-danger">
@@ -144,7 +141,26 @@
         </tr>
                 <tr>
             <td>
-                <form method="get" class="inline-form">
+                <form method="POST" class="inline-form">
+                    <input type="hidden" name="dept_id" value="6">
+                    <input type="text" name="dept_name" value="Neurology">
+            </td>
+            <td>2</td>
+            <td>
+                    <input type="submit" name="rename" value="Save" class="btn btn-small">
+                </form>
+            </td>
+            <td>
+                <form method="POST" class="inline-form"
+                      onsubmit="return confirm('Delete this department?')">
+                    <input type="hidden" name="dept_id" value="6">
+                    <input type="submit" name="remove" value="Delete" class="btn btn-small btn-danger">
+                </form>
+            </td>
+        </tr>
+                <tr>
+            <td>
+                <form method="POST" class="inline-form">
                     <input type="hidden" name="dept_id" value="3">
                     <input type="text" name="dept_name" value="Orthopedics">
             </td>
@@ -154,7 +170,7 @@
                 </form>
             </td>
             <td>
-                <form method="get" class="inline-form"
+                <form method="POST" class="inline-form"
                       onsubmit="return confirm('Delete this department?')">
                     <input type="hidden" name="dept_id" value="3">
                     <input type="submit" name="remove" value="Delete" class="btn btn-small btn-danger">
@@ -170,9 +186,9 @@
             DoctorConnect &middot; CSC 3215 Web Technologies &middot; Group 6, Section F &middot; Summer 2025-26
         </div>
 
-        </div><!-- .container -->
+        </div>
     </main>
-</div><!-- .shell -->
+</div>
 
 </body>
 </html>
