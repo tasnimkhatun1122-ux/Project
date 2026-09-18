@@ -41,10 +41,8 @@ calls `book(3)` on `PatientController`.
 ```
 doctorconnect-mvc/
 ├── index.php              front controller — every request enters here
-├── .htaccess              pretty URLs (falls back to ?url= if mod_rewrite is off)
-├── config/config.php      database credentials, BASE_URL, time slots
-├── app/
-│   ├── core/
+
+
 │   │   ├── Database.php   one shared connection, prepared statements only
 │   │   ├── Model.php      base class every model extends
 │   │   ├── Controller.php base class — view(), redirect(), requireRole()
