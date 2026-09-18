@@ -1,2 +1,2 @@
 # DoctorConnect - Online Doctor Appointment Management System
-
+DoctorConnect is a web-based doctor appointment management system for a hospital, built with HTML, CSS, JavaScript, PHP and MySQL on XAMPP. Patients register, search doctors by department, and book an appointment in an available time slot. Doctors manage their schedule and mark visits as completed with a diagnosis and a visit note. The Receptionist runs the front desk: checking arriving patients in, marking no-shows and booking walk-in patients at the counter. The Admin manages doctors, departments and all appointments. The system replaces the manual serial system with online booking, uses PHP sessions to log in four types of users, and stores all data in a MySQL database using prepared statements.
