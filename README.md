@@ -1,2 +1,2 @@
 # Project
-FinalTerm_Project
+DoctorConnect - Online Doctor Appointment Management System
