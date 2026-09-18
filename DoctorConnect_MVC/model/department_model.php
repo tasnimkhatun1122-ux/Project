@@ -1,0 +1,2 @@
+<?php require_once __DIR__.'/database.php';class DepartmentModel{private PDO $db;function __construct(){$this->db=Database::get();}function all(){return $this->db->query('SELECT * FROM departments ORDER BY name')->fetchAll();}function save($n,$id=null){if($id){$s=$this->db->prepare('UPDATE departments SET name=? WHERE id=?');return $s->execute([$n,$id]);}$s=$this->db->prepare('INSERT INTO departments(name) VALUES(?)');return $s->execute([$n]);}function delete($id){$s=$this->db->prepare('DELETE FROM departments WHERE id=?');return $s->execute([$id]);}}
+?>
