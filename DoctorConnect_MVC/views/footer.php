@@ -1,1 +1,0 @@
-</main><footer>DoctorConnect © <?=date('Y')?> — Online Doctor Appointment Management System</footer><script src="views/app.js"></script></body></html>
