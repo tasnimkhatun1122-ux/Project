@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <!-- CSS -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background-color: #f4f8fa;
+
+            color: #18232b;
+
+            overflow: hidden;
+        }
+
+        .login-page {
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+
+            background-color: #f4f8fa;
+        }
+
+        .login-intro {
+            width: 39%;
+
+            background-color: #13838d;
+
+            color: white;
+
+            padding: 0 60px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 36px;
+        }
+
+        .brand-icon {
+            width: 33px;
+            height: 33px;
+
+            background-color: white;
+
+            color: #13838d;
+
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+            font-weight: bold;
+
+            line-height: 1;
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .intro-title {
+            font-size: 34px;
+
+            line-height: 1.38;
+
+            font-weight: 700;
+
+            max-width: 390px;
+
+            margin-bottom: 20px;
+        }
+
+        .intro-description {
+            font-size: 13px;
+
+            line-height: 1.55;
+
+            color: rgba(255, 255, 255, 0.90);
+
+            max-width: 365px;
+
+            margin-bottom: 18px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            position: relative;
+
+            padding-left: 16px;
+
+            margin-bottom: 13px;
+
+            font-size: 13px;
+
+            line-height: 1.45;
+
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .feature-list li::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 7px;
+
+            width: 6px;
+            height: 6px;
+
+            background-color: white;
+
+            border-radius: 50%;
+        }
+
+        .login-section {
+            width: 61%;
+
+            background-color: #f4f8fa;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-card {
+            width: 293px;
+
+            min-height: 312px;
+
+            background-color: white;
+
+            border-radius: 10px;
+
+            padding: 30px 27px 25px;
+
+            box-shadow:
+                0 7px 20px rgba(30, 55, 65, 0.10);
+        }
+
+        .login-title {
+            font-size: 25px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+
+            color: #17232b;
+        }
+
+        .login-subtitle {
+            font-size: 12px;
+
+            color: #6c777d;
+
+            margin-bottom: 19px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            color: #68747a;
+
+            margin-bottom: 7px;
+        }
+
+        .form-input {
+            width: 100%;
+
+            height: 40px;
+
+            border: 1px solid #dce4e7;
+
+            border-radius: 6px;
+
+            padding: 0 12px;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 12px;
+
+            color: #27343b;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .form-input::placeholder {
+            color: #a9b3b8;
+        }
+
+        .form-input:focus {
+            border-color: #13838d;
+
+            box-shadow:
+                0 0 0 2px rgba(19, 131, 141, 0.08);
+        }
+
+        .login-button {
+            width: 100%;
+
+            height: 40px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background-color: #13838d;
+
+            color: white;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.2s ease,
+                transform 0.1s ease;
+        }
+
+        .login-button:hover {
+            background-color: #0f7079;
+        }
+
+        .login-button:active {
+            transform: scale(0.99);
+        }
+
+        .register-text {
+            text-align: center;
+
+            font-size: 11px;
+
+            color: #68747a;
+
+            margin-top: 17px;
+        }
+
+        .register-link {
+            color: #13838d;
+
+            text-decoration: none;
+
+            font-weight: 600;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            display: none;
+
+            font-size: 10px;
+
+            color: #d64545;
+
+            margin-top: 5px;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .success-message {
+            display: none;
+
+            text-align: center;
+
+            font-size: 11px;
+
+            color: #13838d;
+
+            margin-top: 12px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @media (max-width: 750px) {
+
+            body {
+                overflow: auto;
+            }
+
+            .login-page {
+                width: 100vw;
+
+                height: auto;
+
+                min-height: 100vh;
+
+                flex-direction: column;
+            }
+
+            .login-intro {
+                width: 100%;
+
+                padding: 45px 40px;
+            }
+
+            .login-section {
+                width: 100%;
+
+                padding: 45px 20px;
+            }
+
+            .intro-title {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .login-intro {
+                padding: 35px 25px;
+            }
+
+            .login-section {
+                padding: 35px 15px;
+            }
+
+            .login-card {
+                width: 100%;
+
+                max-width: 293px;
+            }
+
+            .intro-title {
+                font-size: 27px;
+            }
+
+            .brand-name {
+                font-size: 17px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<!-- HTML -->
+
+<body>
+
+    <main class="login-page">
+
+        <section class="login-intro">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    +
+                </div>
+
+                <span class="brand-name">
+                    DoctorConnect
+                </span>
+
+            </div>
+
+            <h1 class="intro-title">
+                Book your doctor,<br>
+                skip the queue.
+            </h1>
+
+            <p class="intro-description">
+                An online appointment system for the hospital
+                reception desk — patients, doctors, receptionists
+                and admin in one place.
+            </p>
+
+            <ul class="feature-list">
+
+                <li>
+                    Search doctors by department
+                </li>
+
+                <li>
+                    Book an open time slot instantly
+                </li>
+
+                <li>
+                    Track appointment status online
+                </li>
+
+            </ul>
+
+        </section>
+
+        <section class="login-section">
+
+            <div class="login-card">
+
+                <h2 class="login-title">
+                    Log in
+                </h2>
+
+                <p class="login-subtitle">
+                    Enter your account details to continue.
+                </p>
+
+                <!-- FIXED: Added action -->
+                <form
+                    id="loginForm"
+                    method="POST"
+                    action="../public/index.php?action=login">
+
+                    <div class="form-group">
+
+                        <label
+                            for="email"
+                            class="form-label">
+
+                            Email
+
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="form-input"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                        >
+
+                        <p
+                            id="emailError"
+                            class="error-message">
+
+                            Please enter a valid email address.
+
+                        </p>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label
+                            for="password"
+                            class="form-label">
+
+                            Password
+
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="form-input"
+                            placeholder="••••••••"
+                            autocomplete="current-password"
+                        >
+
+                        <p
+                            id="passwordError"
+                            class="error-message">
+
+                            Please enter your password.
+
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="login-button">
+
+                        Log in
+
+                    </button>
+
+                    <p
+                        id="successMessage"
+                        class="success-message">
+
+                        Login successful!
+
+                    </p>
+
+                </form>
+
+                <p class="register-text">
+
+                    Don't have an account?
+
+                    <a
+                        href="../public/index.php?action=register"
+                        class="register-link">
+
+                        Register
+
+                    </a>
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- JS -->
+
+    <script>
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const emailInput =
+            document.getElementById("email");
+
+        const passwordInput =
+            document.getElementById("password");
+
+        const emailError =
+            document.getElementById("emailError");
+
+        const passwordError =
+            document.getElementById("passwordError");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        loginForm.addEventListener("submit", function (event) {
+
+            emailError.classList.remove("show");
+            passwordError.classList.remove("show");
+            successMessage.classList.remove("show");
+
+            let isValid = true;
+
+            const email =
+                emailInput.value.trim();
+
+
+            /* Email validation */
+
+            if (email === "") {
+
+                emailError.textContent =
+                    "Email is required.";
+
+                emailError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+            else if (!isValidEmail(email)) {
+
+                emailError.textContent =
+                    "Please enter a valid email address.";
+
+                emailError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+
+            /* Password validation */
+
+            const password =
+                passwordInput.value;
+
+
+            if (password === "") {
+
+                passwordError.textContent =
+                    "Password is required.";
+
+                passwordError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+
+            /*
+                If validation fails,
+                stop form submission.
+            */
+
+            if (!isValid) {
+
+                event.preventDefault();
+
+                return;
+
+            }
+
+            /*
+                If validation succeeds,
+                DO NOT preventDefault().
+
+                The browser will submit:
+
+                POST ../PHP/login.php
+
+                Then login.php will create the
+                session and redirect to:
+
+                receptionistDashboard.php
+            */
+
+        });
+
+
+        function isValidEmail(email) {
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            return emailPattern.test(email);
+
+        }
+
+
+        emailInput.addEventListener("input", function () {
+
+            if (emailInput.value.trim() !== "") {
+
+                emailError.classList.remove("show");
+
+            }
+
+            successMessage.classList.remove("show");
+
+        });
+
+
+        passwordInput.addEventListener("input", function () {
+
+            if (passwordInput.value !== "") {
+
+                passwordError.classList.remove("show");
+
+            }
+
+            successMessage.classList.remove("show");
+
+        });
+
+    </script>
+
+</body>
+
+</html>

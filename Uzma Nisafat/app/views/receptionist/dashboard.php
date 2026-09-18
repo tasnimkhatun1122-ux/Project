@@ -1,119 +1,25 @@
 <?php
 
-session_start();
-
-if (!isset($_SESSION["user_id"]) || $_SESSION["role"] !== "receptionist") {
-    header("Location: ../Receptionist/Login.html");
-    exit;
-}
-
-require_once "db.php";
-
-$selectedDate = $_GET["date"] ?? date("Y-m-d");
-
-if (!preg_match("/^\d{4}-\d{2}-\d{2}$/", $selectedDate)) {
-    $selectedDate = date("Y-m-d");
-}
-
-$isToday = ($selectedDate === date("Y-m-d"));
-
-
-
-$queue = [];
-
-$sql = "SELECT a.appt_id, a.time_slot, a.status,
-               pu.full_name AS patient_name,
-               du.full_name AS doctor_name
-        FROM appointments a
-        JOIN users pu ON a.patient_id = pu.user_id
-        JOIN doctors d ON a.doctor_id = d.doctor_id
-        JOIN users du ON d.user_id = du.user_id
-        WHERE a.appt_date = ?";
-
-$stmt = $conn->prepare($sql);
-
-if ($stmt) {
-    $stmt->bind_param("s", $selectedDate);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    while ($row = $result->fetch_assoc()) {
-        $queue[] = $row;
-    }
-
-    $stmt->close();
-}
-
-usort($queue, function ($a, $b) {
-
-    $timeA = DateTime::createFromFormat("h:i A", trim($a["time_slot"]));
-    $timeB = DateTime::createFromFormat("h:i A", trim($b["time_slot"]));
-
-    if ($timeA === false && $timeB === false) {
-        return $a["appt_id"] <=> $b["appt_id"];
-    }
-
-    if ($timeA === false) {
-        return 1;
-    }
-
-    if ($timeB === false) {
-        return -1;
-    }
-
-    return $timeA <=> $timeB;
-});
-
-
-
-$statAppointments = count($queue);
-$statCheckedIn = 0;
-$statWaiting = 0;
-$statNoShow = 0;
-
-foreach ($queue as $row) {
-
-    if ($row["status"] === "checked_in" || $row["status"] === "completed") {
-        $statCheckedIn++;
-    } elseif ($row["status"] === "pending") {
-        $statWaiting++;
-    } elseif ($row["status"] === "no_show") {
-        $statNoShow++;
-    }
-}
-
-
-$doctors = [];
-
-$sql = "SELECT d.doctor_id, u.full_name
-        FROM doctors d
-        JOIN users u ON d.user_id = u.user_id
-        ORDER BY u.full_name";
-
-$result = $conn->query($sql);
-
-if ($result) {
-    while ($row = $result->fetch_assoc()) {
-        $doctors[] = $row;
-    }
-}
-
-$receptionistName = $_SESSION["full_name"] ?? "Receptionist";
-
-$conn->close();
-
-
-function statusBadge($status) {
-
+function statusBadge($status)
+{
     if ($status === "pending") {
-        return ["label" => "Waiting", "class" => "status-waiting"];
+        return [
+            "label" => "Waiting",
+            "class" => "status-waiting"
+        ];
     }
 
     if ($status === "no_show") {
-        return ["label" => "No show", "class" => "status-noshow"];
+        return [
+            "label" => "No show",
+            "class" => "status-noshow"
+        ];
     }
 
-    return ["label" => "Seen", "class" => "status-seen"];
+    return [
+        "label" => "Seen",
+        "class" => "status-seen"
+    ];
 }
 
 ?>
@@ -127,7 +33,7 @@ function statusBadge($status) {
 
     <title>Front desk</title>
 
-    <link rel="stylesheet" href="../CSS/receptionist.css">
+    <link rel="stylesheet" href="css/receptionist.css">
 </head>
 
 <body>
@@ -170,12 +76,18 @@ function statusBadge($status) {
                         Patients
                     </li>
 
-                    <li class="nav-item" data-nav="profile" onclick="window.location.href='profile.php'">
+                    <li
+                        class="nav-item"
+                        data-nav="profile"
+                        onclick="window.location.href='../../controllers/ReceptionistController.php?action=profile'">
                         <span class="nav-dot"></span>
                         My profile
                     </li>
 
-                    <li class="nav-item" data-nav="logout" onclick="window.location.href='logout.php'">
+                    <li
+                        class="nav-item"
+                        data-nav="logout"
+                        onclick="window.location.href='../../controllers/ReceptionistController.php?action=logout'">
                         <span class="nav-dot"></span>
                         Logout
                     </li>
@@ -227,13 +139,12 @@ function statusBadge($status) {
             </div>
 
 
-
             <section class="stats-grid">
 
                 <div class="stat-card">
 
                     <div class="stat-value" id="statAppointments">
-                        31
+                        <?php echo $statAppointments; ?>
                     </div>
 
                     <div class="stat-label">
@@ -246,7 +157,7 @@ function statusBadge($status) {
                 <div class="stat-card">
 
                     <div class="stat-value" id="statCheckedIn">
-                        18
+                        <?php echo $statCheckedIn; ?>
                     </div>
 
                     <div class="stat-label">
@@ -259,7 +170,7 @@ function statusBadge($status) {
                 <div class="stat-card">
 
                     <div class="stat-value amber" id="statWaiting">
-                        9
+                        <?php echo $statWaiting; ?>
                     </div>
 
                     <div class="stat-label">
@@ -272,7 +183,7 @@ function statusBadge($status) {
                 <div class="stat-card">
 
                     <div class="stat-value red" id="statNoShow">
-                        4
+                        <?php echo $statNoShow; ?>
                     </div>
 
                     <div class="stat-label">
@@ -282,7 +193,6 @@ function statusBadge($status) {
                 </div>
 
             </section>
-
 
 
             <section class="content-grid">
@@ -323,25 +233,54 @@ function statusBadge($status) {
 
                                 <?php } ?>
 
+
                                 <?php foreach ($queue as $index => $row) {
 
                                     $badge = statusBadge($row["status"]);
-                                    $serial = "#" . str_pad((string) ($index + 1), 2, "0", STR_PAD_LEFT);
-                                    $doctorLabel = "Dr. " . $row["doctor_name"];
+
+                                    $serial =
+                                        "#" .
+                                        str_pad(
+                                            (string) ($index + 1),
+                                            2,
+                                            "0",
+                                            STR_PAD_LEFT
+                                        );
+
+                                    $doctorLabel =
+                                        "Dr. " . $row["doctor_name"];
 
                                 ?>
 
                                 <tr data-appt-id="<?php echo (int) $row["appt_id"]; ?>">
-                                    <td class="cell-serial"><?php echo htmlspecialchars($serial); ?></td>
-                                    <td class="cell-patient"><?php echo htmlspecialchars($row["patient_name"]); ?></td>
-                                    <td class="cell-doctor"><?php echo htmlspecialchars($doctorLabel); ?></td>
-                                    <td class="cell-time"><?php echo htmlspecialchars($row["time_slot"]); ?></td>
+
+                                    <td class="cell-serial">
+                                        <?php echo htmlspecialchars($serial); ?>
+                                    </td>
+
+                                    <td class="cell-patient">
+                                        <?php echo htmlspecialchars($row["patient_name"]); ?>
+                                    </td>
+
+                                    <td class="cell-doctor">
+                                        <?php echo htmlspecialchars($doctorLabel); ?>
+                                    </td>
+
+                                    <td class="cell-time">
+                                        <?php echo htmlspecialchars($row["time_slot"]); ?>
+                                    </td>
+
                                     <td>
-                                        <span class="status-badge <?php echo $badge["class"]; ?>">
+
+                                        <span
+                                            class="status-badge <?php echo $badge["class"]; ?>">
                                             <?php echo $badge["label"]; ?>
                                         </span>
+
                                     </td>
+
                                     <td>
+
                                         <?php if ($row["status"] === "pending") { ?>
 
                                             <button
@@ -350,7 +289,9 @@ function statusBadge($status) {
                                                 data-action="checkin">
                                                 Check in
                                             </button>
+
                                             &nbsp;/&nbsp;
+
                                             <button
                                                 type="button"
                                                 class="action-link"
@@ -369,10 +310,14 @@ function statusBadge($status) {
 
                                         <?php } else { ?>
 
-                                            <span class="action-none">—</span>
+                                            <span class="action-none">
+                                                —
+                                            </span>
 
                                         <?php } ?>
+
                                     </td>
+
                                 </tr>
 
                                 <?php } ?>
@@ -464,8 +409,12 @@ function statusBadge($status) {
 
                                 <?php foreach ($doctors as $doctor) { ?>
 
-                                    <option value="<?php echo (int) $doctor["doctor_id"]; ?>">
-                                        Dr. <?php echo htmlspecialchars($doctor["full_name"]); ?>
+                                    <option
+                                        value="<?php echo (int) $doctor["doctor_id"]; ?>">
+
+                                        Dr.
+                                        <?php echo htmlspecialchars($doctor["full_name"]); ?>
+
                                     </option>
 
                                 <?php } ?>
@@ -554,6 +503,7 @@ function statusBadge($status) {
     </div>
 
 
+    <script src="js/receptionist.js"></script>
 
 </body>
 

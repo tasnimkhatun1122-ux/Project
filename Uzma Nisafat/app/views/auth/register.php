@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register</title>
+
+ <!-- CSS -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background-color: #f4f8fa;
+
+            color: #18232b;
+
+            overflow: hidden;
+        }
+        .register-page {
+            width: 100vw;
+            height: 100vh;
+
+            display: flex;
+
+            background-color: #f4f8fa;
+        }
+
+        .register-intro {
+            width: 39%;
+
+            background-color: #13838d;
+
+            color: white;
+
+            padding: 0 60px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 36px;
+        }
+
+
+        .brand-icon {
+            width: 33px;
+            height: 33px;
+
+            background-color: white;
+
+            color: #13838d;
+
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+            font-weight: bold;
+
+            line-height: 1;
+        }
+
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+
+        .intro-title {
+            font-size: 34px;
+
+            line-height: 1.38;
+
+            font-weight: 700;
+
+            max-width: 390px;
+
+            margin-bottom: 20px;
+        }
+
+        .intro-description {
+            font-size: 13px;
+
+            line-height: 1.55;
+
+            color: rgba(255, 255, 255, 0.90);
+
+            max-width: 365px;
+        }
+
+        .register-section {
+            width: 61%;
+
+            background-color: #f4f8fa;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .register-card {
+            width: 411px;
+
+            min-height: 312px;
+
+            background-color: white;
+
+            border-radius: 10px;
+
+            padding: 30px 27px 25px;
+
+            box-shadow:
+                0 7px 20px rgba(30, 55, 65, 0.10);
+        }
+
+
+        .register-title {
+            font-size: 25px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+
+            color: #17232b;
+        }
+
+
+        .register-subtitle {
+            font-size: 12px;
+
+            color: #6c777d;
+
+            margin-bottom: 19px;
+        }
+
+
+        .form-row {
+            display: flex;
+
+            gap: 14px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+
+            min-width: 0;
+        }
+
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+
+        .form-label {
+            display: block;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            color: #68747a;
+
+            margin-bottom: 7px;
+        }
+
+
+
+        .form-input,
+        .form-select {
+            width: 100%;
+
+            height: 40px;
+
+            border: 1px solid #dce4e7;
+
+            border-radius: 6px;
+
+            padding: 0 12px;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 12px;
+
+            color: #27343b;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .form-select {
+            background-color: white;
+
+            appearance: none;
+
+            -webkit-appearance: none;
+
+            -moz-appearance: none;
+
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2368747a' stroke-width='1.4' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+            background-repeat: no-repeat;
+
+            background-position: right 12px center;
+
+            cursor: pointer;
+        }
+
+
+        .form-input::placeholder {
+            color: #a9b3b8;
+        }
+
+
+        .form-input:focus,
+        .form-select:focus {
+            border-color: #13838d;
+
+            box-shadow:
+                0 0 0 2px rgba(19, 131, 141, 0.08);
+        }
+
+
+        .register-button {
+            width: 100%;
+
+            height: 40px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            background-color: #13838d;
+
+            color: white;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                background-color 0.2s ease,
+                transform 0.1s ease;
+        }
+
+
+        .register-button:hover {
+            background-color: #0f7079;
+        }
+
+
+        .register-button:active {
+            transform: scale(0.99);
+        }
+
+
+        .login-text {
+            text-align: center;
+
+            font-size: 11px;
+
+            color: #68747a;
+
+            margin-top: 17px;
+        }
+
+
+        .login-link {
+            color: #13838d;
+
+            text-decoration: none;
+
+            font-weight: 600;
+        }
+
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+
+
+        .error-message {
+            display: none;
+
+            font-size: 10px;
+
+            color: #d64545;
+
+            margin-top: 5px;
+        }
+
+
+        .error-message.show {
+            display: block;
+        }
+
+
+        .success-message {
+            display: none;
+
+            text-align: center;
+
+            font-size: 11px;
+
+            color: #13838d;
+
+            margin-top: 12px;
+        }
+
+
+        .success-message.show {
+            display: block;
+        }
+
+
+
+        @media (max-width: 750px) {
+
+            body {
+                overflow: auto;
+            }
+
+
+            .register-page {
+                width: 100vw;
+
+                height: auto;
+
+                min-height: 100vh;
+
+                flex-direction: column;
+            }
+
+
+            .register-intro {
+                width: 100%;
+
+                padding: 45px 40px;
+            }
+
+
+            .register-section {
+                width: 100%;
+
+                padding: 45px 20px;
+            }
+
+
+            .intro-title {
+                font-size: 30px;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+
+            .register-intro {
+                padding: 35px 25px;
+            }
+
+
+            .register-section {
+                padding: 35px 15px;
+            }
+
+
+            .register-card {
+                width: 100%;
+
+                max-width: 411px;
+            }
+
+
+            .form-row {
+                flex-direction: column;
+
+                gap: 0;
+            }
+
+
+            .intro-title {
+                font-size: 27px;
+            }
+
+
+            .brand-name {
+                font-size: 17px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<!-- HTML -->
+
+<body>
+
+
+
+    <main class="register-page">
+
+
+        <section class="register-intro">
+
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    +
+                </div>
+
+                <span class="brand-name">
+                    DoctorConnect
+                </span>
+
+            </div>
+
+            <h1 class="intro-title">
+                Create your<br>
+                account.
+            </h1>
+
+
+            <p class="intro-description">
+                One account for every role in the hospital —
+                patient, doctor, receptionist and admin.
+            </p>
+
+        </section>
+
+
+
+        <section class="register-section">
+
+
+            <div class="register-card">
+
+
+                <h2 class="register-title">
+                    Register
+                </h2>
+
+
+                <p class="register-subtitle">
+                    Fill in your details to create an account.
+                </p>
+
+
+
+                <form id="registerForm" action="../public/index.php?action=register" method="POST">
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label
+                                for="fullName"
+                                class="form-label">
+
+                                Full name
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                class="form-input"
+                                placeholder="e.g. Uzma Nisafat"
+                                autocomplete="name"
+                            >
+
+
+                            <p
+                                id="fullNameError"
+                                class="error-message">
+
+                                Please enter your full name.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="email"
+                                class="form-label">
+
+                                Email
+
+                            </label>
+
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-input"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                            >
+
+
+                            <p
+                                id="emailError"
+                                class="error-message">
+
+                                Please enter a valid email address.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label
+                                for="phone"
+                                class="form-label">
+
+                                Phone
+
+                            </label>
+
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                class="form-input"
+                                placeholder="01XXXXXXXXX"
+                                autocomplete="tel"
+                            >
+
+
+                            <p
+                                id="phoneError"
+                                class="error-message">
+
+                                Please enter a valid phone number.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="role"
+                                class="form-label">
+
+                                Role
+
+                            </label>
+
+
+                            <select
+                                id="role"
+                                name="role"
+                                class="form-select">
+
+                                <option value="" disabled selected>
+                                    Select role
+                                </option>
+
+                                <option value="patient">
+                                    Patient
+                                </option>
+
+                                <option value="doctor">
+                                    Doctor
+                                </option>
+
+                                <option value="receptionist">
+                                    Receptionist
+                                </option>
+
+                                <option value="admin">
+                                    Admin
+                                </option>
+
+                            </select>
+
+
+                            <p
+                                id="roleError"
+                                class="error-message">
+
+                                Please select a role.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label
+                                for="password"
+                                class="form-label">
+
+                                Password
+
+                            </label>
+
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                class="form-input"
+                                placeholder="••••••••"
+                                autocomplete="new-password"
+                            >
+
+
+                            <p
+                                id="passwordError"
+                                class="error-message">
+
+                                Password must be at least 6 characters.
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                for="confirmPassword"
+                                class="form-label">
+
+                                Confirm password
+
+                            </label>
+
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                class="form-input"
+                                placeholder="••••••••"
+                                autocomplete="new-password"
+                            >
+
+
+                            <p
+                                id="confirmPasswordError"
+                                class="error-message">
+
+                                Passwords do not match.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="register-button">
+
+                        Create account
+
+                    </button>
+
+
+
+                    <p
+                        id="successMessage"
+                        class="success-message">
+
+                        Account created successfully!
+
+                    </p>
+
+                </form>
+
+
+
+                <p class="login-text">
+
+                    Already registered?
+
+                    <a
+                        href="../public/index.php?action=login"
+                        class="login-link">
+
+                        Log in
+
+                    </a>
+
+                </p>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+ <!-- JS -->
+
+
+    <script>
+
+
+        const registerForm =
+            document.getElementById("registerForm");
+
+        const fullNameInput =
+            document.getElementById("fullName");
+
+        const emailInput =
+            document.getElementById("email");
+
+        const phoneInput =
+            document.getElementById("phone");
+
+        const roleInput =
+            document.getElementById("role");
+
+        const passwordInput =
+            document.getElementById("password");
+
+        const confirmPasswordInput =
+            document.getElementById("confirmPassword");
+
+
+        const fullNameError =
+            document.getElementById("fullNameError");
+
+        const emailError =
+            document.getElementById("emailError");
+
+        const phoneError =
+            document.getElementById("phoneError");
+
+        const roleError =
+            document.getElementById("roleError");
+
+        const passwordError =
+            document.getElementById("passwordError");
+
+        const confirmPasswordError =
+            document.getElementById("confirmPasswordError");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+
+        registerForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            fullNameError.classList.remove("show");
+
+            emailError.classList.remove("show");
+
+            phoneError.classList.remove("show");
+
+            roleError.classList.remove("show");
+
+            passwordError.classList.remove("show");
+
+            confirmPasswordError.classList.remove("show");
+
+            successMessage.classList.remove("show");
+
+
+            let isValid = true;
+
+
+
+            const fullName =
+                fullNameInput.value.trim();
+
+
+            if (fullName === "") {
+
+                fullNameError.textContent =
+                    "Full name is required.";
+
+                fullNameError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+
+
+            const email =
+                emailInput.value.trim();
+
+
+            if (email === "") {
+
+                emailError.textContent =
+                    "Email is required.";
+
+                emailError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+            else if (!isValidEmail(email)) {
+
+                emailError.textContent =
+                    "Please enter a valid email address.";
+
+                emailError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+
+
+            const phone =
+                phoneInput.value.trim();
+
+
+            if (phone === "") {
+
+                phoneError.textContent =
+                    "Phone number is required.";
+
+                phoneError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+            else if (!isValidPhone(phone)) {
+
+                phoneError.textContent =
+                    "Please enter a valid phone number.";
+
+                phoneError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+
+
+            const role =
+                roleInput.value;
+
+
+            if (role === "") {
+
+                roleError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+
+
+            const password =
+                passwordInput.value;
+
+
+            if (password === "") {
+
+                passwordError.textContent =
+                    "Password is required.";
+
+                passwordError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+            else if (password.length < 6) {
+
+                passwordError.textContent =
+                    "Password must be at least 6 characters.";
+
+                passwordError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+
+
+            const confirmPassword =
+                confirmPasswordInput.value;
+
+
+            if (confirmPassword === "") {
+
+                confirmPasswordError.textContent =
+                    "Please confirm your password.";
+
+                confirmPasswordError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+            else if (password !== "" && confirmPassword !== password) {
+
+                confirmPasswordError.textContent =
+                    "Passwords do not match.";
+
+                confirmPasswordError.classList.add("show");
+
+                isValid = false;
+
+            }
+
+            if (isValid) {
+
+                const formData = new FormData(registerForm);
+
+                fetch("../PHP/register.php", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(function (response) {
+                    return response.text();
+                })
+                .then(function (result) {
+
+                    if (result.includes("Account created successfully!")) {
+
+                        successMessage.textContent =
+                            "Account created successfully!";
+
+                        successMessage.classList.add("show");
+
+                        registerForm.reset();
+
+                    } else {
+
+                        successMessage.textContent = result;
+
+                        successMessage.style.color = "#d64545";
+
+                        successMessage.classList.add("show");
+
+                    }
+
+                })
+                .catch(function (error) {
+
+                    successMessage.textContent =
+                        "Something went wrong. Please try again.";
+
+                    successMessage.style.color = "#d64545";
+
+                    successMessage.classList.add("show");
+
+                    console.error(error);
+
+                });
+
+            }
+
+        });
+
+        function isValidEmail(email) {
+
+           const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            return emailPattern.test(email);
+
+        }
+
+
+        function isValidPhone(phone) {
+
+            const phonePattern =
+    /^[0-9+\-\s]{7,15}$/;
+
+            return phonePattern.test(phone);
+
+        }
+
+
+
+        [fullNameInput, emailInput, phoneInput, passwordInput, confirmPasswordInput]
+            .forEach(function (input) {
+
+                input.addEventListener("input", function () {
+
+                    successMessage.classList.remove("show");
+
+                });
+
+            });
+
+
+        fullNameInput.addEventListener("input", function () {
+
+            if (fullNameInput.value.trim() !== "") {
+
+                fullNameError.classList.remove("show");
+
+            }
+
+        });
+
+
+        emailInput.addEventListener("input", function () {
+
+            if (emailInput.value.trim() !== "") {
+
+                emailError.classList.remove("show");
+
+            }
+
+        });
+
+
+        phoneInput.addEventListener("input", function () {
+
+            if (phoneInput.value.trim() !== "") {
+
+                phoneError.classList.remove("show");
+
+            }
+
+        });
+
+
+        roleInput.addEventListener("change", function () {
+
+            if (roleInput.value !== "") {
+
+                roleError.classList.remove("show");
+
+            }
+
+            successMessage.classList.remove("show");
+
+        });
+
+
+        passwordInput.addEventListener("input", function () {
+
+            if (passwordInput.value.length >= 6) {
+
+                passwordError.classList.remove("show");
+
+            }
+
+            if (confirmPasswordInput.value !== "" &&
+                confirmPasswordInput.value === passwordInput.value) {
+
+                confirmPasswordError.classList.remove("show");
+
+            }
+
+        });
+
+
+        confirmPasswordInput.addEventListener("input", function () {
+
+            if (confirmPasswordInput.value !== "" &&
+                confirmPasswordInput.value === passwordInput.value) {
+
+                confirmPasswordError.classList.remove("show");
+
+            }
+
+        });
+
+    </script>
+        
+</body>
+        
+</html>
+        
