@@ -1,2 +1,2 @@
 # Project
-FinalTerm
+FinalTerm_Project
