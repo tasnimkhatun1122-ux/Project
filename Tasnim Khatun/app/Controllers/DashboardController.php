@@ -11,7 +11,8 @@ class DashboardController
         $doctorUserId = $_SESSION['user_id'];
         $doctor = Doctor::findByUserId($doctorUserId);
 
-        if (!$doctor) {
+        if (!$doctor)
+        {
             die("No doctor profile is linked to this account yet. Please contact the admin.");
         }
 
