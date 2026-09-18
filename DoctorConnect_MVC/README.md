@@ -51,7 +51,7 @@ doctorconnect-mvc/
 │   ├── models/            User, Doctor, Department, Appointment
 │   ├── controllers/       Home, Auth, Patient, Doctor, Reception, Admin, Profile
 │   └── views/
-│       ├── layouts/       app (sidebar), auth (split), plain (public)
+│
 │       └── …              one folder per controller
 └── public/css/style.css
 ```
