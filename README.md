@@ -1,2 +1,2 @@
-# Project
-DoctorConnect - Online Doctor Appointment Management System
+# DoctorConnect - Online Doctor Appointment Management System
+
